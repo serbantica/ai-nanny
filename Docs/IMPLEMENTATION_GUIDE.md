@@ -1815,3 +1815,238 @@ class SessionManager:
         return session
     
     async def end_session(
+```
+
+## 7. Persona System
+
+> **📄 Full Implementation:** See [chapters/07_persona_system.md](chapters/07_persona_system.md) for complete details including all 5 default persona YAML/Markdown examples.
+
+### 7.1 Core Design Principles
+1. **Persona ≠ Model**: Personas are configurable behavioral layers, not separate models by default.
+2. **Instruction-first, training-last**: Adapt via prompts and documents before fine-tuning.
+3. **Runtime switchability**: Persona changes must not require redeployment or retraining.
+4. **Governance by design**: All persona adaptations are versioned, auditable, and reversible.
+5. **Edge-device abstraction**: The system behaves like a deployable companion device, even when virtual.
+
+### 7.2 Persona Adaptation Modes
+| Mode | Description | Use Case |
+|------|-------------|----------|
+| `instruction_only` | System prompt + examples only | Default, most personas |
+| `instruction_rag` | Prompt + document retrieval | Knowledge-grounded responses |
+| `fine_tuned_model` | Custom trained model | Premium, regulatory, offline |
+
+### 7.3 Default Personas
+1. **Companion** - Warm, conversational companion
+2. **Medication Nurse** - Patient, clear medication reminders
+3. **Storyteller** - Engaging storyteller for entertainment
+4. **Entertainer** - Fun activity host for games and trivia
+5. **Emergency** - Calm, clear emergency response
+
+### 7.4 Persona Artifact Structure
+```
+/personas/{persona_id}/
+  ├─ config.yaml          # Voice, behavior, scheduling
+  ├─ system_prompt.md     # Core personality definition
+  ├─ examples/            # Sample dialogs
+  ├─ knowledge/           # RAG documents (optional)
+  └─ metadata.json        # Version, tags, audit
+```
+
+---
+
+## 8. API Specifications
+
+> **📄 Full Implementation:** See [chapters/08_api_specifications.md](chapters/08_api_specifications.md) for complete Pydantic schemas and endpoint documentation.
+
+### 8.1 Device Endpoints
+- `POST /devices` - Register new device
+- `GET /devices/{id}/state` - Get device status
+- `POST /devices/{id}/persona/switch` - Switch active persona
+
+### 8.2 Dialog Endpoints
+- `POST /dialog/send` - Send message, get response
+
+### 8.3 Coordination Endpoints
+- `POST /sessions/{id}/handoff` - Transfer session between devices
+- `POST /coordination/group-activity` - Start synchronized activity
+- `POST /coordination/broadcast` - Broadcast event to devices
+
+### 8.4 WebSocket Protocol
+- Connection URL: `wss://api.ai-companion.io/ws/{device_id}`
+- Real-time audio streaming, persona commands, sync events
+
+---
+
+## 9. Database Schema
+
+> **📄 Full Implementation:** See [chapters/09_database_schema.md](chapters/09_database_schema.md) for complete SQLAlchemy ORM models and Alembic migrations.
+
+### 9.1 Core Tables
+| Table | Purpose |
+|-------|---------|
+| `users` | Admin and API authentication |
+| `devices` | Registered edge devices |
+| `device_groups` | Multi-device groupings |
+| `personas` | Persona definitions and config |
+| `persona_versions` | Versioned persona artifacts |
+| `sessions` | Active conversation sessions |
+| `messages` | Conversation history |
+| `events` | Telemetry and audit log |
+
+---
+
+## 10. Dashboard Implementation
+
+> **📄 Full Implementation:** See [chapters/10_dashboard_implementation.md](chapters/10_dashboard_implementation.md) for complete Streamlit app code.
+
+### 10.1 Purpose
+Streamlit demo UI for licensing pitches, testing, and quick iteration.
+
+### 10.2 Pages
+1. **Device Management** - Register, view status, group devices
+2. **Persona Library** - Browse and preview personas
+3. **Device Simulator** - Test conversations without hardware
+4. **Analytics** - Usage metrics and performance charts
+
+---
+
+## 11. Device Runtime
+
+> **📄 Full Implementation:** See [chapters/11_device_runtime.md](chapters/11_device_runtime.md) for complete Python device agent code.
+
+### 11.1 Device Agent Components
+- **AudioHandler**: Microphone input, speaker output, VAD
+- **GPIOController**: Physical buttons and LED control
+- **WebSocketClient**: Real-time control plane connection
+- **PersonaCache**: Offline persona storage
+
+### 11.2 Reference Hardware (~$128/unit)
+- Raspberry Pi 4 (4GB) - $55
+- USB Speakerphone - $30
+- 3-Button Keypad - $8
+- RGB LED Strip - $5
+- Power Supply + Enclosure - $30
+
+### 11.3 Interaction Mapping
+| Button | Action |
+|--------|--------|
+| 🔴 Red | Emergency persona |
+| 🟢 Green | Companion persona |
+| 🔵 Blue | Activity/Entertainer persona |
+
+---
+
+## 12. Multi-Device Coordination
+
+> **📄 Full Implementation:** See [chapters/12_multi_device_coordination.md](chapters/12_multi_device_coordination.md) for Event Bus, Group Activity, and Handoff code.
+
+### 12.1 Coordination Modes
+| Mode | Description |
+|------|-------------|
+| **Synchronous** | All devices play same content |
+| **Handoff** | Transfer session between devices |
+| **Group Activity** | Coordinated multi-device games |
+| **Event Propagation** | Device A triggers Device B |
+
+### 12.2 Key Components
+- **EventBus**: Redis pub/sub for real-time events
+- **GroupActivityCoordinator**: Manages synchronized activities
+- **HandoffManager**: Transfers sessions with context preservation
+
+---
+
+## 13. Testing Strategy
+
+> **📄 Full Implementation:** See [chapters/13_testing_strategy.md](chapters/13_testing_strategy.md) for complete pytest code and CI/CD configuration.
+
+### 13.1 Test Categories
+| Category | Coverage Target | Tools |
+|----------|-----------------|-------|
+| Unit | 80% | pytest |
+| Integration | 70% | pytest-asyncio |
+| E2E | Critical paths | pytest + httpx |
+| Performance | SLA compliance | Locust |
+
+### 13.2 Success Criteria
+- [ ] Persona switch latency < 2 seconds
+- [ ] Multi-device coordination with 3+ devices
+- [ ] 8-hour continuous operation without restart
+- [ ] Voice recognition ≥ 60% accuracy
+- [ ] Session handoff preserves context
+
+---
+
+## 14. Deployment
+
+> **📄 Full Implementation:** See [chapters/14_deployment.md](chapters/14_deployment.md) for Docker, Terraform, Nginx, and monitoring configuration.
+
+### 14.1 Control Plane
+- Docker production build with multi-worker uvicorn
+- Nginx reverse proxy with TLS
+- Terraform for AWS/Azure infrastructure
+- Prometheus + Grafana monitoring
+
+### 14.2 Edge Devices
+- Device setup script (`setup_device.sh`)
+- Device registration script (`register_device.sh`)
+- Systemd service for auto-start
+
+### 14.3 Security Checklist
+- [ ] TLS everywhere
+- [ ] JWT token expiry (24h)
+- [ ] Per-device authentication tokens
+- [ ] Rate limiting (100 req/min/device)
+- [ ] Secrets in vault (AWS Secrets Manager)
+
+---
+
+## 15. Development Phases
+
+> **📄 Full Implementation:** See [chapters/15_development_phases.md](chapters/15_development_phases.md) for detailed task breakdowns and checklists.
+
+### 15.1 Phase Summary
+
+| Phase | Duration | Deliverable |
+|-------|----------|-------------|
+| 0 | Week 1 | Development environment ready |
+| 1 | Weeks 2-3 | Single device conversation working |
+| 2 | Weeks 4-5 | Multi-persona switching |
+| 3 | Weeks 6-7 | Multi-device coordination |
+| 4 | Weeks 8-9 | Dashboard demo ready |
+| 5 | Weeks 10-11 | MVP deployed |
+
+**Total: 11 weeks to MVP**
+
+### 15.2 Milestone Timeline
+```
+Week 1:  ──── Phase 0 ────  [Environment Ready]
+Week 3:  ──── Phase 1 ────  [Single Device Talking]
+Week 5:  ──── Phase 2 ────  [Multi-Persona Working]
+Week 7:  ──── Phase 3 ────  [Multi-Device Coordinating]
+Week 9:  ──── Phase 4 ────  [Dashboard Demo Ready]
+Week 11: ──── Phase 5 ────  [MVP Deployed]
+```
+
+---
+
+## Appendix: Chapter Files
+
+All detailed implementation files are in the `chapters/` directory:
+
+| File | Content |
+|------|---------|
+| [01_executive_summary.md](chapters/01_executive_summary.md) | Vision, users, success metrics |
+| [02_system_architecture.md](chapters/02_system_architecture.md) | Architecture diagrams, data flows |
+| [03_technology_stack.md](chapters/03_technology_stack.md) | Dependencies, versions |
+| [04_project_structure.md](chapters/04_project_structure.md) | Directory layout |
+| [05_environment_setup.md](chapters/05_environment_setup.md) | Setup instructions, Docker |
+| [06_core_modules_implementation.md](chapters/06_core_modules_implementation.md) | Python implementation code |
+| [07_persona_system.md](chapters/07_persona_system.md) | Persona YAML/prompts, 5 defaults |
+| [08_api_specifications.md](chapters/08_api_specifications.md) | Pydantic schemas, endpoints |
+| [09_database_schema.md](chapters/09_database_schema.md) | SQLAlchemy ORM models |
+| [10_dashboard_implementation.md](chapters/10_dashboard_implementation.md) | Streamlit app code |
+| [11_device_runtime.md](chapters/11_device_runtime.md) | Device agent Python code |
+| [12_multi_device_coordination.md](chapters/12_multi_device_coordination.md) | Event bus, handoff, group activities |
+| [13_testing_strategy.md](chapters/13_testing_strategy.md) | Pytest code, CI/CD |
+| [14_deployment.md](chapters/14_deployment.md) | Docker, Terraform, monitoring |
+| [15_development_phases.md](chapters/15_development_phases.md) | Task breakdown, timelines |

@@ -1,0 +1,19 @@
+name: "Emergency Response"
+description: "Calm, clear guidance during emergencies"
+version: "1.0.0"
+
+voice:
+  provider: "elevenlabs"
+  voice_id: "ErXwobaYiN019PkySvjV"
+  speed: 0.85
+  stability: 0.9
+  pitch: 1.0
+  similarity_boost: 0.75
+
+adaptation_mode: "instruction_only"
+trigger_types: ["button", "voice_command"]
+context_retention_hours: 1
+max_response_tokens: 150
+temperature: 0.3
+
+tags: ["emergency", "safety", "critical"]

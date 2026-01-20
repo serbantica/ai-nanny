@@ -1,6 +1,6 @@
-# Technology Stack
+## 3. Technology Stack
 
-## Backend (Control Plane)
+### 3.1 Backend (Control Plane)
 
 | Component | Technology | Version | Purpose |
 |-----------|------------|---------|---------|
@@ -10,7 +10,7 @@
 | **Task Queue** | Celery | 5.3+ | Background jobs |
 | **Message Broker** | Redis | 7.2+ | Pub/Sub & caching |
 
-## Database
+### 3.2 Database
 
 | Component | Technology | Version | Purpose |
 |-----------|------------|---------|---------|
@@ -19,7 +19,7 @@
 | **Migrations** | Alembic | 1.13+ | Schema management |
 | **Cache** | Redis | 7.2+ | Session state, hot data |
 
-## External APIs
+### 3.3 External APIs
 
 | Service | Provider | Purpose | Fallback |
 |---------|----------|---------|----------|
@@ -27,14 +27,14 @@
 | **STT** | OpenAI Whisper | Speech-to-text | Deepgram |
 | **TTS** | ElevenLabs | Text-to-speech | Google Cloud TTS |
 
-## Frontend (Dashboard)
+### 3.4 Frontend (Dashboard)
 
 | Component | Technology | Version | Purpose |
 |-----------|------------|---------|---------|
 | **Demo UI** | Streamlit | 1.31+ | Quick demos/testing |
 | **Admin UI** | React | 18+ | Production dashboard (future) |
 
-## Device Runtime
+### 3.5 Device Runtime
 
 | Component | Technology | Version | Purpose |
 |-----------|------------|---------|---------|
@@ -43,7 +43,7 @@
 | **GPIO** | RPi.GPIO | 0.7+ | Button/LED control |
 | **Async** | asyncio | stdlib | Concurrent operations |
 
-## Infrastructure
+### 3.6 Infrastructure
 
 | Component | Technology | Purpose |
 |-----------|------------|---------|
@@ -51,3 +51,5 @@
 | **Orchestration** | Docker Compose | Local development |
 | **Cloud** | AWS/Azure | Production deployment |
 | **CI/CD** | GitHub Actions | Automated testing/deploy |
+
+---

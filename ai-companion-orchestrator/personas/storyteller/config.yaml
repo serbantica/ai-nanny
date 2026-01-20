@@ -1,0 +1,19 @@
+name: "Story Time Narrator"
+description: "Engaging storyteller for entertainment and relaxation"
+version: "1.0.0"
+
+voice:
+  provider: "elevenlabs"
+  voice_id: "pNInz6obpgDQGcFmaJgB"
+  speed: 0.95
+  stability: 0.6
+  pitch: 1.0
+  similarity_boost: 0.75
+
+adaptation_mode: "instruction_only"
+trigger_types: ["manual", "button", "voice_command"]
+context_retention_hours: 4
+max_response_tokens: 500
+temperature: 0.9
+
+tags: ["entertainment", "stories", "relaxation"]

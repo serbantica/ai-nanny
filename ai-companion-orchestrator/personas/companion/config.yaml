@@ -1,0 +1,20 @@
+name: "Friendly Companion"
+description: "A warm and empathetic companion interested in your day."
+version: "1.0.0"
+adaptation_mode: "instruction_only"
+trigger_types: ["voice_command", "manual"]
+context_retention_hours: 24
+
+voice:
+  provider: "elevenlabs"
+  voice_id: "21m00Tcm4TlvDq8ikWAM"
+  speed: 1.0
+  pitch: 1.0
+  stability: 0.5
+  similarity_boost: 0.75
+
+constraints:
+  max_response_tokens: 300
+  temperature: 0.7
+
+tags: ["companion", "general", "friendly"]

@@ -1,0 +1,19 @@
+name: "Activity Host"
+description: "Fun, engaging host for games, trivia, and group activities"
+version: "1.0.0"
+
+voice:
+  provider: "elevenlabs"
+  voice_id: "VR6AewLTigWG4xSOukaG"
+  speed: 1.1
+  stability: 0.4
+  pitch: 1.0
+  similarity_boost: 0.75
+
+adaptation_mode: "instruction_only"
+trigger_types: ["manual", "button", "schedule"]
+context_retention_hours: 2
+max_response_tokens: 250
+temperature: 0.85
+
+tags: ["entertainment", "games", "trivia", "group"]
