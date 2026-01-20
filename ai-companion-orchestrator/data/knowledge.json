@@ -1,0 +1,83 @@
+[
+  {
+    "id": "doc_b18d046e0305",
+    "filename": "emergency_protocols.md",
+    "status": "processed",
+    "chunk_count": 9,
+    "category": "Facility Protocols",
+    "context": "medication_nurse",
+    "upload_date": "2026-01-20T10:52:37.560077"
+  },
+  {
+    "id": "doc_001",
+    "filename": "Emergency_Protocols.pdf",
+    "status": "ready",
+    "chunk_count": 24,
+    "category": "Facility Protocols",
+    "context": "Global",
+    "upload_date": "2026-01-15 09:30"
+  },
+  {
+    "id": "doc_002",
+    "filename": "Medication_Schedule_Guide.pdf",
+    "status": "ready",
+    "chunk_count": 18,
+    "category": "Domain Knowledge",
+    "context": "medication_nurse",
+    "upload_date": "2026-01-16 14:20"
+  },
+  {
+    "id": "doc_003",
+    "filename": "Bedtime_Stories_Collection.txt",
+    "status": "ready",
+    "chunk_count": 42,
+    "category": "Domain Knowledge",
+    "context": "storyteller",
+    "upload_date": "2026-01-17 11:45"
+  },
+  {
+    "id": "doc_004",
+    "filename": "Senior_Care_Best_Practices.docx",
+    "status": "ready",
+    "chunk_count": 35,
+    "category": "Behavioral Guidelines",
+    "context": "Global",
+    "upload_date": "2026-01-17 16:10"
+  },
+  {
+    "id": "doc_005",
+    "filename": "Conversation_Examples_Empathy.json",
+    "status": "ready",
+    "chunk_count": 15,
+    "category": "Conversation Examples",
+    "context": "Global",
+    "upload_date": "2026-01-18 10:00"
+  },
+  {
+    "id": "doc_006",
+    "filename": "Entertainment_Activities_Guide.pdf",
+    "status": "ready",
+    "chunk_count": 28,
+    "category": "Domain Knowledge",
+    "context": "entertainer",
+    "upload_date": "2026-01-18 13:25"
+  },
+  {
+    "id": "doc_007",
+    "filename": "Fire_Safety_Procedures.pdf",
+    "status": "ready",
+    "chunk_count": 12,
+    "category": "Facility Protocols",
+    "context": "Global",
+    "upload_date": "2026-01-19 08:15"
+  },
+  {
+    "id": "doc_008",
+    "filename": "Educational_Curriculum_K5.pdf",
+    "status": "processing",
+    "chunk_count": 0,
+    "category": "Domain Knowledge",
+    "context": "tutor",
+    "upload_date": "2026-01-19 15:40"
+  }
+]

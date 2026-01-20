@@ -1,0 +1,42 @@
+[project]
+name = "ai-companion-orchestrator"
+version = "0.1.0"
+description = "Orchestration engine for AI Companion devices"
+authors = [
+    {name = "AI Nanny Team", email = "team@example.com"},
+]
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "pydantic>=2.6.0",
+    "pydantic-settings>=2.1.0",
+    "sqlalchemy>=2.0.25",
+    "asyncpg>=0.29.0",
+    "alembic>=1.13.1",
+    "redis>=5.0.1",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "anthropic>=0.18.1",
+    "openai>=1.12.0",
+    "elevenlabs>=0.2.27",
+    "websockets>=12.0",
+    "httpx>=0.26.0",
+    # RAG dependencies
+    "chromadb>=0.4.22",
+    "pypdf2>=3.0.1",
+    "langchain>=0.1.0",
+    "langchain-community>=0.0.10",
+    "tiktoken>=0.5.2",
+    "sentence-transformers>=2.2.2",
+    "torch>=2.0.0",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
