@@ -1,0 +1,24 @@
+# Vector Store Directory
+
+This directory contains ChromaDB vector store data.
+
+**Note:** This directory is gitignored. Vector store data is generated from documents and should not be committed to version control.
+
+## Regenerate Vector Store
+
+If you need to recreate the vector store:
+
+1. Ensure you have documents in `../documents/`
+2. Run the ingestion script:
+   ```bash
+   python ingest_documents.py
+   ```
+
+## Directory Structure
+
+```
+vector_store/
+├── .gitkeep          # Keeps directory in git
+├── chroma.sqlite3    # ChromaDB database (gitignored)
+└── ...               # Other ChromaDB files (gitignored)
+```

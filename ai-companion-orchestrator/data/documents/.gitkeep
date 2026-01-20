@@ -1,0 +1,36 @@
+# Documents Directory
+
+This directory contains documents for the RAG (Retrieval-Augmented Generation) system.
+
+**Note:** User-uploaded documents are gitignored. Only sample/template documents are committed to version control.
+
+## Supported Formats
+
+- PDF (.pdf)
+- Text (.txt)
+- Markdown (.md)
+- Word (.docx)
+
+## Sample Documents
+
+The following sample documents are included:
+- `emergency_protocols.md` - Emergency response procedures
+- `activity_guidelines.md` - Activity and engagement guidelines
+- `health_kinetics_procedures.md` - Health monitoring procedures
+
+## Adding Documents
+
+1. Place documents in this directory
+2. Run the ingestion script:
+   ```bash
+   python ingest_documents.py
+   ```
+3. Documents will be processed and added to the vector store
+
+## Security Note
+
+Do not commit documents containing:
+- Personal Health Information (PHI)
+- Personally Identifiable Information (PII)
+- Proprietary information
+- API keys or credentials
